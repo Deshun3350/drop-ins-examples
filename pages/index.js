@@ -49,33 +49,7 @@ app.get("/upgrade-customer", function (req, res) {
 });
 
 app.get("/upload-document", function (req, res) {
-
-  dwolla.post("customers", {
-    // This body is hard coded, and will need to be replaced in production
-    type: "personal",
-    firstName: "document",
-    lastName: "hodgins",
-    email: `${Math.random()}email12@email.com`,
-    address1: "726 Evergreen Terrace",
-    city: "Springfield",
-    state: "OR",
-    postalCode: "32817",
-    dateOfBirth: "1990-03-22",
-    ssn: "1111"
-  })
-  
-  .then(function(customerRes){
-    const customerId = customerRes.headers.get("location").split("/").slice(-1)[0]
-    generateClientToken(
-      "customer.documents.create",
-      customerId
-    ).then((cRes) => {
-      const customer = {
-        id: customerId,
-      };
-      res.status(200).render(`document`, { customer, token: cRes.token });
-    });     
-  })
+  res.status(200).render(`document`, { customerId: "a3cfb929-436e-48c4-91b3-6197f798c6f4" });
 });
 
 app.get("/personal-vcr-flow", function (req, res) {

@@ -17,13 +17,12 @@
             background-color: #ffffff;
         }
     </style>
-    <script src="//cdn.dwolla.com/v2/dwolla-web.js"></script>
+    <script src="//cdn.dwolla.com/v2.1.6/dwolla-web.js"></script>
     <link rel="stylesheet" href="/styles/main.css">
     <script>
-        dwolla.configure({
+        dwolla.configure({ 
             environment: "sandbox",
-            // styles: "/styles/payin.css",
-            token: () => Promise.resolve(`{{token}}`),
+            // styles: "/styles/payin.css",            
             tokenUrl: "/tokenUrl",
             success: (res) => Promise.resolve(),
             error: (err) => Promise.resolve()
@@ -38,7 +37,7 @@
         <div class="container-sm">
             <h3>Pay In</h3>
             <div class="orange-border">
-                <dwolla-payin customerId="4594a375-ca4c-4220-a36a-fa7ce556449d" blob="{{ blob }}"></dwolla-payin>
+                <dwolla-payin customerId="0e1c29cd-6262-46bf-b15a-0055e72c9529" blob="{{ blob }}" token="{{ token }}"></dwolla-payin>
             </div>
         </div>
         <div class="container-sm">
@@ -54,14 +53,13 @@
         dwolla.configure({
             environment: "sandbox",
             styles: "styles/custom-styles.css",
-            token: () => Promise.resolve("TOKEN"),
-            tokenUrl: () => "/tokenUrl",
+            tokenUrl: "/tokenUrl",
             success: (res) => Promise.resolve(res),
             error: (err) => Promise.resolve(err),
         });
     &lt;/script&gt;
 
-    &lt;dwolla-payin customerId="customerId"&gt;&lt;/dwolla-payin&gt;
+    &lt;dwolla-payin customerId="customerId" blob="blob" token="token"&gt;&lt;/dwolla-payin&gt;
 </pre>
             </div>
         </div>
